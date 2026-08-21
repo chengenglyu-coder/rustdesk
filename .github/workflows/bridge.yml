@@ -86,8 +86,8 @@ jobs:
       - name: Install flutter rust bridge deps
         shell: bash
         run: |
-          cargo install cargo-expand --version ${{ env.CARGO_EXPAND_VERSION }} 
-          cargo install flutter_rust_bridge_codegen --version ${{ env.FLUTTER_RUST_BRIDGE_VERSION }} --features "uuid" 
+          cargo install cargo-expand --version ${{ env.CARGO_EXPAND_VERSION }} --locked
+          cargo install flutter_rust_bridge_codegen --version ${{ env.FLUTTER_RUST_BRIDGE_VERSION }} --features "uuid" --locket
           if [[ "${{ matrix.job.flutter-version }}" == "3.22.3" ]]; then
             # Default Flutter 3.22.3: extended_text 14 needs a newer Dart, so downgrade for resolution.
             sed -i -e 's/extended_text: 14.0.0/extended_text: 13.0.0/g' flutter/pubspec.yaml
